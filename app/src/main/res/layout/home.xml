@@ -38,13 +38,14 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="163dp"
         android:background="@drawable/trbtn"
         android:text="Translate"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ResourceRecommenderButton"
-        tools:layout_editor_absoluteY="163dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/SubjectButton"

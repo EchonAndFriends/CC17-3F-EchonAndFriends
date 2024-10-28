@@ -33,7 +33,7 @@ class Login : AppCompatActivity() {
                 val isUserExists = dbHelper.checkUser(email, password)
                 if (isUserExists) {
                     Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                    // Redirect to the home page
+
                     startActivity(Intent(this, Home::class.java))
                     finish()
                 } else {

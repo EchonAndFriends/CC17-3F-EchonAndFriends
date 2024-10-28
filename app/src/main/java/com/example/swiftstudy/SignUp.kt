@@ -36,7 +36,7 @@ class SignUp : AppCompatActivity() {
                 val isInserted = dbHelper.addUser(name, email, password)
                 if (isInserted) {
                     Toast.makeText(this, "Registered successfully!", Toast.LENGTH_SHORT).show()
-                    // Redirect to login page
+
                     startActivity(Intent(this, Login::class.java))
                     finish()
                 } else {

@@ -10,11 +10,12 @@
         android:id="@+id/imageView2"
         android:layout_width="721dp"
         android:layout_height="748dp"
+        android:layout_marginBottom="263dp"
         android:rotation="-40"
         android:src="@drawable/bb"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-212dp"
-        tools:layout_editor_absoluteY="-281dp" />
+        tools:layout_editor_absoluteX="-212dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -67,9 +68,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="131dp"
         android:layout_marginTop="365dp"
+        android:layout_marginBottom="318dp"
         android:background="#2E82DB"
         android:text="Login"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
