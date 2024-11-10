@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SwiftStudy"
         tools:targetApi="31">
         <activity
+            android:name=".inSub"
+            android:exported="false" />
+        <activity
             android:name=".ResourceRecommender"
             android:exported="true" />
         <activity
