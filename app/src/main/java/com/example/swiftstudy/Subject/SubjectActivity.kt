@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swiftstudy.Database.DatabaseHelper
 import com.example.swiftstudy.R
-import com.example.swiftstudy.subject.SubjectAdapter
+import com.example.swiftstudy.Subject.SubjectAdapter
 
 class SubjectActivity : AppCompatActivity() {
 
@@ -41,6 +41,12 @@ class SubjectActivity : AppCompatActivity() {
             },
             onEdit = { subjectId, subjectName ->
                 showEditSubjectDialog(subjectId, subjectName)
+            },
+            onClick = { subjectId ->
+                // Start the SubjectViewActivity (or in_sub.kt)
+                val intent = Intent(this, in_sub::class.java)
+                intent.putExtra("subjectId", subjectId) // Pass the subject ID
+                startActivity(intent)
             })
 
         subjectRecyclerView.adapter = subjectAdapter
@@ -49,6 +55,12 @@ class SubjectActivity : AppCompatActivity() {
         addSubjectButton.setOnClickListener {
             startActivity(Intent(this, CreateSubjectActivity::class.java))
         }
+    }
+
+    private fun refreshSubjects() {
+        val subjects = databaseHelper.getSubjects(userId = 1)
+            .mapIndexed { index, name -> Pair(index + 1, name) }
+        subjectAdapter.updateData(subjects)
     }
 
     private fun showEditSubjectDialog(subjectId: Int, oldName: String) {
@@ -73,11 +85,5 @@ class SubjectActivity : AppCompatActivity() {
         }
 
         dialog.show()
-    }
-
-    private fun refreshSubjects() {
-        val subjects = databaseHelper.getSubjects(userId = 1)
-            .mapIndexed { index, name -> Pair(index + 1, name) }
-        subjectAdapter.updateData(subjects)
     }
 }

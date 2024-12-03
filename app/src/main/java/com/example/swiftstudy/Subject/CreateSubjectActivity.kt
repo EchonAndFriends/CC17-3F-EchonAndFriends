@@ -1,5 +1,6 @@
 package com.example.swiftstudy.Subject
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -23,16 +24,22 @@ class CreateSubjectActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             val subjectName = subjectNameInput.text.toString().trim()
             if (subjectName.isNotEmpty()) {
-                // Assuming the user ID is passed, otherwise hardcode or get it dynamically
-                val userId = 1 // Replace with the actual user ID
-                if (databaseHelper.addSubject(userId, subjectName)) {
-                    Toast.makeText(this, "Subject saved!", Toast.LENGTH_SHORT).show()
-                    finish() // Close the activity and go back
+                // Add subject to the database
+                val userId = 1 // Replace with actual user ID
+                val success = databaseHelper.addSubject(userId, subjectName)
+
+                if (success) {
+                    Toast.makeText(this, "Subject added.", Toast.LENGTH_SHORT).show()
+
+                    // Go back to the SubjectActivity and refresh the subjects
+                    val intent = Intent(this, SubjectActivity::class.java)
+                    startActivity(intent)
+                    finish() // Finish the current activity
                 } else {
-                    Toast.makeText(this, "Error saving subject", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Failed to add subject.", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Please enter a subject name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter a subject name.", Toast.LENGTH_SHORT).show()
             }
         }
     }

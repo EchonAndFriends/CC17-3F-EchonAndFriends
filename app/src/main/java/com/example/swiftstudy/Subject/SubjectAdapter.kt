@@ -1,24 +1,20 @@
-package com.example.swiftstudy.subject
+package com.example.swiftstudy.Subject
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swiftstudy.R
 
 class SubjectAdapter(
-    private val subjects: MutableList<Pair<Int, String>>, // Pair of subject ID and name
+    private var subjects: List<Pair<Int, String>>,
     private val onDelete: (Int) -> Unit,
-    private val onEdit: (Int, String) -> Unit
+    private val onEdit: (Int, String) -> Unit,
+    private val onClick: (Int) -> Unit // Add this line for click handling
 ) : RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder>() {
-
-    inner class SubjectViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val subjectName: EditText = view.findViewById(R.id.scienceTextInput)
-        val editButton: ImageView = view.findViewById(R.id.editIcon)
-        val deleteButton: ImageView = view.findViewById(R.id.deleteIcon)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -28,26 +24,32 @@ class SubjectAdapter(
 
     override fun onBindViewHolder(holder: SubjectViewHolder, position: Int) {
         val (subjectId, subjectName) = subjects[position]
-        holder.subjectName.setText(subjectName)
+        holder.subjectNameTextView.text = subjectName
 
-        holder.editButton.setOnClickListener {
-            holder.subjectName.isFocusableInTouchMode = true
-            holder.subjectName.requestFocus()
-            val updatedName = holder.subjectName.text.toString().trim()
-            onEdit(subjectId, updatedName)
+        // Set up onClick listener for the subject item
+        holder.itemView.setOnClickListener {
+            onClick(subjectId) // Call the onClick function passed to the adapter
         }
 
+        holder.deleteIcon.setOnClickListener {
+            onDelete(subjectId) // Delete the subject
+        }
 
-        holder.deleteButton.setOnClickListener {
-            onDelete(subjectId)
+        holder.editIcon.setOnClickListener {
+            onEdit(subjectId, subjectName) // Edit the subject
         }
     }
 
     override fun getItemCount(): Int = subjects.size
 
     fun updateData(newSubjects: List<Pair<Int, String>>) {
-        subjects.clear()
-        subjects.addAll(newSubjects)
+        subjects = newSubjects
         notifyDataSetChanged()
+    }
+
+    class SubjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val subjectNameTextView: TextView = itemView.findViewById(R.id.subjectName)
+        val deleteIcon: ImageView = itemView.findViewById(R.id.deleteIcon)
+        val editIcon: ImageView = itemView.findViewById(R.id.editIcon)
     }
 }

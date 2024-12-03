@@ -8,7 +8,7 @@
 
     <!-- Rectangle with placeholder and icons -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/scienceCard"
+        android:id="@+id/subjectCard"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_margin="16dp"
@@ -26,23 +26,23 @@
             android:padding="8dp"
             android:gravity="center_vertical">
 
+
+            <!-- Edit Icon -->
             <EditText
-                android:id="@+id/scienceTextInput"
+                android:id="@+id/subjectName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="subject name"
-                android:textColor="#001F4D"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:background="@android:color/transparent"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="subject name"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false" />
+                android:textColor="#001F4D"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-
-            <!-- Edit Icon -->
             <ImageView
                 android:id="@+id/editIcon"
                 android:layout_width="24dp"
