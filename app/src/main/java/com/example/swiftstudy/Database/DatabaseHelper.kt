@@ -1,4 +1,4 @@
-package com.example.swiftstudy
+package com.example.swiftstudy.Database
 
 import android.content.ContentValues
 import android.content.Context
@@ -60,4 +60,25 @@ class DatabaseHelper(context: Context?) :
                 COLUMN_EMAIL + " TEXT NOT NULL UNIQUE, " +
                 COLUMN_PASSWORD + " TEXT NOT NULL);"
     }
+    fun addSubject(subjectName: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put("name", subjectName)
+        val result = db.insert("subjects", null, values)
+        db.close()
+        return result != -1L
+    }
+
+    fun getAllSubjects(): List<String> {
+        val db = readableDatabase
+        val cursor = db.query("subjects", arrayOf("name"), null, null, null, null, null)
+        val subjects = mutableListOf<String>()
+        while (cursor.moveToNext()) {
+            subjects.add(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+        }
+        cursor.close()
+        db.close()
+        return subjects
+    }
+
 }

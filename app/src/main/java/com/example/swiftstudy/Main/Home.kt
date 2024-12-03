@@ -1,9 +1,13 @@
-package com.example.swiftstudy
+package com.example.swiftstudy.Main
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.swiftstudy.R
+import com.example.swiftstudy.Home.ResourceRecommender
+import com.example.swiftstudy.Subject.SubjectActivity
+import com.example.swiftstudy.Home.Translate
 
 class Home : AppCompatActivity() {
 
@@ -26,7 +30,7 @@ class Home : AppCompatActivity() {
         }
 
         subjectButton.setOnClickListener {
-            val intent = Intent(this, Subject::class.java)
+            val intent = Intent(this, SubjectActivity::class.java)
             startActivity(intent)
         }
     }

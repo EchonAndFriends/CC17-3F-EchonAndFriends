@@ -1,8 +1,10 @@
-package com.example.swiftstudy
+package com.example.swiftstudy.Main
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.example.swiftstudy.Auth.Login
+import com.example.swiftstudy.Auth.SignUp
 
 class Start : AppCompatActivity() {
 

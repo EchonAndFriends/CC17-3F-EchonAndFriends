@@ -1,4 +1,4 @@
-package com.example.swiftstudy
+package com.example.swiftstudy.Auth
 
 import android.content.Intent
 import android.os.Bundle
