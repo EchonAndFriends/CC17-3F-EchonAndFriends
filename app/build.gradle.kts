@@ -1,16 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp") version "2.0.21-1.0.27"
+
 }
 
 android {
     namespace = "com.example.swiftstudy"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.swiftstudy"
-        minSdk = 34
-        targetSdk = 34
+        minSdk = 28
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -48,4 +50,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation ("androidx.appcompat:appcompat:1.6.1")
+    implementation ("androidx.recyclerview:recyclerview:1.3.1")
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation ("androidx.room:room-runtime:2.5.2")
+//    ksp("androidx.room:room-compiler:2.5.2")
+    implementation ("com.google.mlkit:text-recognition:16.2.0")
 }
