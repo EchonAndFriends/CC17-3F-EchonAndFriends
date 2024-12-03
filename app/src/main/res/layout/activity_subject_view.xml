@@ -26,19 +26,21 @@
             android:padding="8dp"
             android:gravity="center_vertical">
 
-            <!-- Editable Text Field -->
             <EditText
                 android:id="@+id/scienceTextInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Enter subject name"
+                android:hint="subject name"
                 android:textColor="#001F4D"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:background="@android:color/transparent"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp" />
+                android:paddingEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
 
             <!-- Edit Icon -->
             <ImageView

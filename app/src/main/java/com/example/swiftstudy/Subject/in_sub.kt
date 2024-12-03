@@ -1,20 +1,29 @@
-package com.example.swiftstudy
+package com.example.swiftstudy.subject
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.swiftstudy.R
+import com.example.swiftstudy.Flashcard.FlashcardMenu
+import com.example.swiftstudy.Notes.NotesActivity
 
 class in_sub : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_in_sub)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Connect the flashcards button
+        val flashcardsButton: ImageView = findViewById(R.id.flashcardsImage)
+        flashcardsButton.setOnClickListener {
+            startActivity(Intent(this, FlashcardMenu::class.java))
+        }
+
+        // Connect the notes button
+        val notesButton: ImageView = findViewById(R.id.notesButton)
+        notesButton.setOnClickListener {
+            startActivity(Intent(this, NotesActivity::class.java))
         }
     }
 }

@@ -1,47 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Subject.CreateSubjectActivity"
-    android:background="@color/blue">
+    android:background="@color/blue"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <EditText
+        android:id="@+id/subjectName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Subject Name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/saveSubjectButton"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="4dp">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:src="@drawable/back" />
-
-        <EditText
-            android:id="@+id/newSubName"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="86dp"
-            android:text="Enter new Subject..."
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="156dp"
-            android:layout_marginTop="96dp"
-            android:background="@color/white"
-            android:text="Save"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textColor="@color/black"
+        android:background="@color/white" />
+</LinearLayout>

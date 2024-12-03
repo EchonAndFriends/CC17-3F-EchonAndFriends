@@ -1,0 +1,46 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Card View for the Flashcard Section -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/flashcardQuestion" <!-- Fixed ID -->
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/nextCardButton" <!-- Updated ID reference -->
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <!-- Button Styled as the Flashcard -->
+    <Button
+        android:id="@+id/flashcardAnswer" <!-- Fixed ID -->
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fcbg" <!-- Replace with your image -->
+    android:text="What is the language used in application development?"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    android:textColor="@android:color/white"
+    android:fontFamily="sans-serif-medium"
+    android:padding="16dp" />
+</androidx.cardview.widget.CardView>
+
+    <Button
+    android:id="@+id/nextCardButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:text="Next Card"
+    android:textColor="@android:color/white"
+    android:backgroundTint="@android:color/holo_blue_light"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>

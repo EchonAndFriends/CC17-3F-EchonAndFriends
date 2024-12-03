@@ -1,4 +1,4 @@
-package com.example.swiftstudy.notes
+package com.example.swiftstudy.Notes
 
 import android.os.Bundle
 import android.widget.Button

@@ -11,7 +11,7 @@ class NewFlashcardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_flashcard)
+        setContentView(R.layout.create_flashcards)
 
         val questionInput: EditText = findViewById(R.id.flashcardQuestionInput)
         val answerInput: EditText = findViewById(R.id.flashcardAnswerInput)

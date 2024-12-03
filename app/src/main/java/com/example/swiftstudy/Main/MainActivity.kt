@@ -1,10 +1,9 @@
-package com.example.swiftstudy.main
+package com.example.swiftstudy.Main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swiftstudy.R
-import com.example.swiftstudy.auth.Start
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

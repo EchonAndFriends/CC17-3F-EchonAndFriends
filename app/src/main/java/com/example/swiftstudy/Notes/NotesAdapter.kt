@@ -1,4 +1,4 @@
-package com.example.swiftstudy.notes
+package com.example.swiftstudy.Notes
 
 import android.view.LayoutInflater
 import android.view.View

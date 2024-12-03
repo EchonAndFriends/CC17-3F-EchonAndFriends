@@ -1,4 +1,4 @@
-package com.example.swiftstudy.database
+package com.example.swiftstudy.Database
 
 import android.content.ContentValues
 import android.content.Context
@@ -145,6 +145,25 @@ class DatabaseHelper(context: Context) :
         db.close()
         return flashcards
     }
+    // Delete a subject
+    fun deleteSubject(subjectId: Int): Boolean {
+        val db = writableDatabase
+        val result = db.delete(TABLE_SUBJECTS, "$COLUMN_ID = ?", arrayOf(subjectId.toString()))
+        db.close()
+        return result > 0
+    }
+
+    // Edit a subject
+    fun updateSubject(subjectId: Int, newName: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_SUBJECT_NAME, newName)
+        }
+        val result = db.update(TABLE_SUBJECTS, values, "$COLUMN_ID = ?", arrayOf(subjectId.toString()))
+        db.close()
+        return result > 0
+    }
+
 
     companion object {
         const val DATABASE_NAME = "swift_study.db"

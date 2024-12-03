@@ -1,7 +1,11 @@
 package com.example.swiftstudy.Subject
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swiftstudy.Database.DatabaseHelper
 import com.example.swiftstudy.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.swiftstudy.subject.SubjectAdapter
 
 class SubjectActivity : AppCompatActivity() {
 
@@ -23,44 +27,57 @@ class SubjectActivity : AppCompatActivity() {
 
         databaseHelper = DatabaseHelper(this)
         subjectRecyclerView = findViewById(R.id.subjectRecyclerView)
-        val addSubjectButton: FloatingActionButton = findViewById(R.id.addSubjectButton)
+        val addSubjectButton: TextView = findViewById(R.id.addSubjectButton)
 
-        // Initialize RecyclerView
-        subjectRecyclerView.layoutManager = LinearLayoutManager(this)
-        subjectAdapter = SubjectAdapter(databaseHelper.getAllSubjects()) // Fetch from DB
+        val subjects = databaseHelper.getSubjects(userId = 1) // Replace with actual user ID
+            .mapIndexed { index, name -> Pair(index + 1, name) }.toMutableList()
+
+        subjectAdapter = SubjectAdapter(subjects,
+            onDelete = { subjectId ->
+                if (databaseHelper.deleteSubject(subjectId)) {
+                    Toast.makeText(this, "Subject deleted.", Toast.LENGTH_SHORT).show()
+                    refreshSubjects()
+                }
+            },
+            onEdit = { subjectId, subjectName ->
+                showEditSubjectDialog(subjectId, subjectName)
+            })
+
         subjectRecyclerView.adapter = subjectAdapter
+        subjectRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Add Subject Button
         addSubjectButton.setOnClickListener {
-            showAddSubjectDialog()
+            startActivity(Intent(this, CreateSubjectActivity::class.java))
         }
     }
 
-    private fun showAddSubjectDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("New Subject")
+    private fun showEditSubjectDialog(subjectId: Int, oldName: String) {
+        val dialog = AlertDialog.Builder(this)
+        dialog.setTitle("Edit Subject")
 
         val input = EditText(this)
-        input.hint = "Enter Subject Name"
-        builder.setView(input)
+        input.hint = "Enter new subject name"
+        input.setText(oldName)
 
-        builder.setPositiveButton("Save") { _: DialogInterface, _: Int ->
-            val subjectName = input.text.toString().trim()
-            if (subjectName.isNotEmpty()) {
-                val isInserted = databaseHelper.addSubject(subjectName)
-                if (isInserted) {
-                    Toast.makeText(this, "Subject added", Toast.LENGTH_SHORT).show()
-                    refreshSubjects()
-                } else {
-                    Toast.makeText(this, "Failed to add subject", Toast.LENGTH_SHORT).show()
-                }
+        dialog.setView(input)
+        dialog.setPositiveButton("Save") { _, _ ->
+            val newName = input.text.toString()
+            if (databaseHelper.updateSubject(subjectId, newName)) {
+                Toast.makeText(this, "Subject updated.", Toast.LENGTH_SHORT).show()
+                refreshSubjects()
             }
         }
-        builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
-        builder.show()
+
+        dialog.setNegativeButton("Cancel") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun refreshSubjects() {
-        subjectAdapter.updateData(databaseHelper.getAllSubjects())
+        val subjects = databaseHelper.getSubjects(userId = 1)
+            .mapIndexed { index, name -> Pair(index + 1, name) }
+        subjectAdapter.updateData(subjects)
     }
 }

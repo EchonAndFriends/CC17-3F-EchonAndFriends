@@ -1,4 +1,4 @@
-package com.example.swiftstudy.flashcard
+package com.example.swiftstudy.Flashcard
 
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +17,7 @@ class FlashcardAdapter(private var flashcards: List<Pair<String, String>>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlashcardViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.flashcard_item, parent, false)
+            .inflate(R.layout.activity_flashcard_review, parent, false)
         return FlashcardViewHolder(view)
     }
 

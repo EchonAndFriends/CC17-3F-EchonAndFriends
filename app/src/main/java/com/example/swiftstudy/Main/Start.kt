@@ -5,6 +5,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swiftstudy.Auth.Login
 import com.example.swiftstudy.Auth.SignUp
+import com.example.swiftstudy.R
 
 class Start : AppCompatActivity() {
 
