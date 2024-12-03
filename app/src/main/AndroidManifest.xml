@@ -13,8 +13,8 @@
         android:theme="@style/Theme.SwiftStudy"
         tools:targetApi="31">
         <activity
-            android:name=".Subject.inSub"
-            android:exported="false" />
+            android:name=".Subject.in_sub"
+            android:exported="true" />
         <activity
             android:name=".Home.ResourceRecommender"
             android:exported="true" />
@@ -40,13 +40,13 @@
             android:name=".Main.Home"
             android:exported="true" />
         <activity
-            android:name=".Login"
+            android:name=".Auth.Login"
             android:exported="true" />
         <activity
-            android:name=".SignUp"
+            android:name=".Auth.SignUp"
             android:exported="true" />
         <activity
-            android:name=".Start"
+            android:name=".Main.Start"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

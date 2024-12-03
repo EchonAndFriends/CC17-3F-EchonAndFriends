@@ -1,4 +1,4 @@
-package com.example.swiftstudy.subject
+package com.example.swiftstudy.Subject
 
 import android.content.Intent
 import android.os.Bundle
