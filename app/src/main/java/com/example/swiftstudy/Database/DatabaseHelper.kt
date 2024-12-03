@@ -24,7 +24,7 @@ class DatabaseHelper(context: Context) :
     }
 
     // User operations
-    fun addUser(email: String, password: String): Boolean {
+    fun addUser(email: String, password: String, password1: String): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_EMAIL, email)

@@ -1,8 +1,8 @@
 package com.example.swiftstudy.Notes
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swiftstudy.R
 
@@ -14,7 +14,7 @@ class NotesActivity : AppCompatActivity() {
 
         val noteTitle: EditText = findViewById(R.id.noteTitle)
         val noteContent: EditText = findViewById(R.id.noteContent)
-        val saveNoteButton: Button = findViewById(R.id.saveNoteButton)
+        val saveNoteButton: FloatingActionButton = findViewById(R.id.saveNoteButton)
 
         saveNoteButton.setOnClickListener {
             val title = noteTitle.text.toString().trim()

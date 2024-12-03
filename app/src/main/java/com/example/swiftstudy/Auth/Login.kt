@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import com.example.swiftstudy.Main.Home
+import com.example.swiftstudy.Database.DatabaseHelper
+import com.example.swiftstudy.R
 class Login : AppCompatActivity() {
     private lateinit var loginEmail: EditText
     private lateinit var loginPass: EditText
