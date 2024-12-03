@@ -36,7 +36,7 @@ class SignUp : AppCompatActivity() {
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
             } else {
-                val isInserted = dbHelper.addUser(name, email, password)
+                val isInserted = dbHelper.addUser(email, password)
                 if (isInserted) {
                     Toast.makeText(this, "Registered successfully!", Toast.LENGTH_SHORT).show()
 

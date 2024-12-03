@@ -24,7 +24,7 @@ class DatabaseHelper(context: Context) :
     }
 
     // User operations
-    fun addUser(email: String, password: String, password1: String): Boolean {
+    fun addUser(email: String, password: String): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_EMAIL, email)
@@ -34,6 +34,7 @@ class DatabaseHelper(context: Context) :
         db.close()
         return result != -1L
     }
+
 
     fun checkUser(email: String, password: String): Boolean {
         val db = readableDatabase
@@ -45,10 +46,14 @@ class DatabaseHelper(context: Context) :
             null, null, null
         )
         val isUserExists = cursor.count > 0
+        if (!isUserExists) {
+            println("No user found with email: $email and password: $password")
+        }
         cursor.close()
         db.close()
         return isUserExists
     }
+
 
     // Subject operations
     fun addSubject(userId: Int, name: String): Boolean {
